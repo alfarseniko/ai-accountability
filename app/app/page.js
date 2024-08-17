@@ -106,7 +106,7 @@ export default function Home() {
                     <Paper sx={{ flexGrow: 1, backgroundColor: '#2c2c2c', padding: '1rem', color: '#fff' }}>
                         <Box
                             width="40vw"
-                            height="85vh"
+                            height="87vh"
                             marginLeft={7}
                             display="flex"
                             flexDirection="column"
@@ -115,10 +115,9 @@ export default function Home() {
                         >
                             <Stack
                                 direction={'column'}
-                                width="875px"
+                                width="900px"
                                 height="900px"
-                                border='1px solid black'
-                                p={2}
+                                p={3}
                                 spacing={3}
                             >
                                 <Stack

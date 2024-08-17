@@ -1,0 +1,3 @@
+const tasks = { 'tasks': [{ "time": "5:00 AM", "task": "Wake up" }, { "time": "5:15 AM", "task": "Clean your car" }, { "time": "6:00 AM", "task": "Clean the house" }, { "time": "7:00 AM - 9:00 AM", "task": "Free time or rest" }, { "time": "9:00 AM - 12:00 PM", "task": "Do homework" }, { "time": "12:00 PM - 1:00 PM", "task": "Free time or relax" }, { "time": "1:00 PM", "task": "Have lunch" }, { "time": "2:00 PM - 5:00 PM", "task": "Rest" }, { "time": "5:00 PM - 8:00 PM", "task": "Play basketball" }, { "time": "8:00 PM onwards", "task": "Relax and prepare for bed" }, { "time": "10:00 PM", "task": "Sleep" }] }
+
+console.log(tasks)

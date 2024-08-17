@@ -2,7 +2,16 @@ import { NextResponse } from 'next/server' // Import NextResponse from Next.js f
 import OpenAI from 'openai' // Import OpenAI library for interacting with the OpenAI API
 
 // System prompt for the AI, providing guidelines on how to respond to users
-const systemPrompt = ''// Use your own system prompt here
+const systemPrompt = `Engage the user in a conversation about the tasks they wish to accomplish for the day. Ask specific questions to understand the nature of each task and the preferred time for completion. Based on the provided details, organize the tasks in chronological order to create a well-structured daily plan. After the plan has been finalized, ask the user permission to return the plan in a JSON format and then return the plan in the following JSON format
+
+{
+    {
+        time: str,
+        task: str,
+    },
+}
+
+`
 
 // POST function to handle incoming requests
 export async function POST(req) {
@@ -40,3 +49,5 @@ export async function POST(req) {
 
     return new NextResponse(stream) // Return the stream as the response
 }
+
+const tasks = [{ "time": "5:00 AM", "task": "Wake up" }, { "time": "5:15 AM", "task": "Clean your car" }, { "time": "6:00 AM", "task": "Clean the house" }, { "time": "7:00 AM - 9:00 AM", "task": "Free time or rest" }, { "time": "9:00 AM - 12:00 PM", "task": "Do homework" }, { "time": "12:00 PM - 1:00 PM", "task": "Free time or relax" }, { "time": "1:00 PM", "task": "Have lunch" }, { "time": "2:00 PM - 5:00 PM", "task": "Rest" }, { "time": "5:00 PM - 8:00 PM", "task": "Play basketball" }, { "time": "8:00 PM onwards", "task": "Relax and prepare for bed" }, { "time": "10:00 PM", "task": "Sleep" }] 
