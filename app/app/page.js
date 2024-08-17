@@ -1,8 +1,24 @@
 'use client'
-import { Grid, Box, TextField, Button, Typography, Paper } from '@mui/material';
+
+import { useEffect, useState } from 'react';
+import { Grid, Box, TextField, Button, Typography, Paper, Stack } from '@mui/material';
 import SettingsIcon from '@mui/icons-material/Settings';
 
 export default function Home() {
+
+    const [messages, setMessages] = useState([ // messages is an array of objects which contain the role and message content
+        {
+            role: 'assistant',
+            content: "Hi! I'm the Headstarter support assistant. How can I help you today?",
+        },
+    ])
+    const [message, setMessage] = useState('')
+
+    const sendMessage = async () => {
+        // We'll implement this function in the next section
+    }
+
+
     return (
         <Grid container sx={{ height: '100vh', backgroundColor: '#1e1e1e', color: '#fff', padding: '1rem' }}>
 
@@ -25,14 +41,69 @@ export default function Home() {
                         Chat Bot
                     </Typography>
                     <Paper sx={{ flexGrow: 1, backgroundColor: '#2c2c2c', padding: '1rem', color: '#fff' }}>
-                        {/* Chat content goes here */}
+                        <Box
+                            width="40vw"
+                            height="85vh"
+                            marginLeft={7}
+                            display="flex"
+                            flexDirection="column"
+                            justifyContent="center"
+                            alignItems="center"
+                        >
+                            <Stack
+                                direction={'column'}
+                                width="875px"
+                                height="900px"
+                                border='1px solid black'
+                                p={2}
+                                spacing={3}
+                            >
+                                <Stack
+                                    direction={'column'}
+                                    spacing={2}
+                                    flexGrow={1}
+                                    overflow="auto"
+                                    maxHeight="100%"
+                                >
+                                    {messages.map((message, index) => (
+                                        <Box
+                                            key={index}
+                                            display="flex"
+                                            justifyContent={
+                                                message.role === 'assistant' ? 'flex-start' : 'flex-end'
+                                            }
+                                        >
+                                            <Box
+                                                bgcolor={
+                                                    message.role === 'assistant'
+                                                        ? 'primary.main'
+                                                        : 'secondary.main'
+                                                }
+                                                color="white"
+                                                borderRadius={16}
+                                                p={3}
+                                            >
+                                                {message.content}
+                                            </Box>
+                                        </Box>
+                                    ))}
+                                </Stack>
+                                <Stack direction={'row'} spacing={2}>
+                                    <TextField
+                                        placeholder="Type here"
+                                        fullWidth
+                                        sx={{ marginTop: '1rem', backgroundColor: '#2c2c2c', input: { color: '#fff' }, borderColor: '#fff' }}
+                                        value={message}
+                                        onChange={(e) => setMessage(e.target.value)}
+                                    />
+                                    <Button variant="contained" onClick={sendMessage}>
+                                        Send
+                                    </Button>
+                                </Stack>
+                            </Stack>
+                        </Box>
                     </Paper>
-                    <TextField
-                        variant="outlined"
-                        fullWidth
-                        placeholder="Type here"
-                        sx={{ marginTop: '1rem', backgroundColor: '#2c2c2c', input: { color: '#fff' }, borderColor: '#fff' }}
-                    />
+
                 </Box>
             </Grid>
 
